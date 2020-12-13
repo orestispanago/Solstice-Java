@@ -1,11 +1,11 @@
 package com.op.solstice;
 
 import models.Sun;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import models.Clip;
+import models.Entity;
 import models.Geometry;
 import models.GeometryItem;
 import models.Material;
@@ -16,18 +16,16 @@ import models.Plane;
 import models.RootNode;
 import models.Vertices;
 import models.VertixCoordinates;
-import org.yaml.snakeyaml.Yaml;
+import services.EntityService;
+import static services.SolsticeService.run_solstice;
+import services.YamlService;
 
 public class MainClass {
+    
 
-    public static void write(RootNode rootnode, String filename) throws IOException{
-//        representer.addClassTag(Node.class, Tag.MAP);
-        Yaml yaml = new Yaml(new SolsticeRepresenter());
-        FileWriter writer = new FileWriter(filename);
-        yaml.dump(rootnode.getNodes(), writer);
-    }
+    public static void main(String[] args) throws IOException, InterruptedException {
+        EntityService es = new EntityService();
 
-    public static void main(String[] args) throws IOException{
         RootNode rootNode = new RootNode();
         Pillbox pillbox = new Pillbox();
         Sun sun = new Sun(1200, pillbox);
@@ -35,31 +33,39 @@ public class MainClass {
         Mirror mirror = new Mirror();
         Material materialSpecular = new Material(mirror, mirror);
         Material materialBlack = new Material(matte, matte);
-        
-        VertixCoordinates xy = new VertixCoordinates(0, 0);
+
+        VertixCoordinates xy = new VertixCoordinates(1, 2);
         Vertices myVertices = new Vertices();
         myVertices.append(xy);
-        myVertices.append(new VertixCoordinates(0, 0));
-        
+        myVertices.append(new VertixCoordinates(1, 1));
+        myVertices.append(new VertixCoordinates(1, 1));
+        myVertices.append(new VertixCoordinates(1, 1));
+
         Geometry geometry = new Geometry();
-        
+
         Clip clip = new Clip(myVertices.getVertices());
 //        clip.append(clipItem);
         List clipList = new ArrayList();
         clipList.add(clip);
         Plane plane = new Plane(clipList);
         GeometryItem geometryItem = new GeometryItem(materialBlack, plane);
-
         geometry.append(geometryItem);
-        
+
+        List geometry1 = new ArrayList();
+        geometry1.add(geometryItem);
+
+        Entity entity = new Entity("entity1");
+        entity.setGeometry(geometry1);
         rootNode.append(sun);
         rootNode.append(materialSpecular);
         rootNode.append(materialBlack);
         rootNode.append(geometry);
-        VertixCoordinates xy1 = new VertixCoordinates(2,4);
-        myVertices.append(xy1);
+        rootNode.append(entity);
+
 //        exportObject("blabla.yaml");
-        write(rootNode, "blabla.yaml");
+        YamlService.write(rootNode, "blabla.yaml");
+        run_solstice();
+
     }
 
 }

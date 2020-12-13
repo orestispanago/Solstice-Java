@@ -1,6 +1,6 @@
 package models;
 
-public class Mirror {
+public class Mirror extends Node{
     private double reflectivity;
     private double slope_error;
 

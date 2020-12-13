@@ -2,17 +2,30 @@
     dni: 1200.0
     pillbox: {half_angle: 0.2664}
 - material:
-    back: &id001 {reflectivity: 1.0, slope_error: 0.0}
-    front: *id001
+    back:
+      mirror: &id001 {reflectivity: 1.0, slope_error: 0.0}
+    front:
+      mirror: *id001
 - material: &id003
-    back: &id002 {reflectivity: 0.0}
-    front: *id002
+    back:
+      matte: &id002 {reflectivity: 0.0}
+    front:
+      matte: *id002
 - geometry:
-  - material: *id003
+  - &id004
+    material: *id003
     plane:
       clip:
       - operation: AND
         vertices:
-        - [0.0, 0.0]
-        - [0.0, 0.0]
-        - [2.0, 4.0]
+        - [1.0, 2.0]
+        - [1.0, 1.0]
+        - [1.0, 1.0]
+        - [1.0, 1.0]
+- entity:
+    geometry:
+    - *id004
+    name: entity1
+    transform:
+      rotation: [0.0, 0.0, 0.0]
+      translation: [0.0, 0.0, 0.0]

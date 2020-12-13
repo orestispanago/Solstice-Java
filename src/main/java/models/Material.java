@@ -1,32 +1,34 @@
 package models;
 
+import java.util.HashMap;
+
 public class Material extends Node{
 
-    private Object back;
-    private Object front;
+    private HashMap back;
+    private HashMap front;
 
-    public Material(Object back, Object front) {
-        this.back = back;
-        this.front = front;
+    public Material(Node back, Node front) {
+        this.back = back.toHashMap();
+        this.front = front.toHashMap();
     }
 
-    public Object getBack() {
+    public HashMap getBack() {
         return back;
     }
 
-    public void setBack(Object back) {
+    public void setBack(HashMap back) {
         this.back = back;
     }
 
-    public Object getFront() {
+    public HashMap getFront() {
         return front;
     }
 
-    public void setFront(Object front) {
+    public void setFront(HashMap front) {
         this.front = front;
     }
 
-    
+
     @Override
     public String toString() {
         return "Material{" + "back=" + back + ", front=" + front + '}';

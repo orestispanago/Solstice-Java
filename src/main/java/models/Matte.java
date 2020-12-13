@@ -1,6 +1,6 @@
 package models;
 
-public class Matte {
+public class Matte extends Node{
     private double reflectivity;
 
     public Matte(double reflectivity) {
