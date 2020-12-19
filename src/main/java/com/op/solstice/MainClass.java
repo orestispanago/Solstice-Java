@@ -17,11 +17,10 @@ import models.RootNode;
 import models.Vertices;
 import models.VertixCoordinates;
 import services.EntityService;
-import static services.SolsticeService.run_solstice;
+import static services.SolsticeService.exportObj;
 import services.YamlService;
 
 public class MainClass {
-    
 
     public static void main(String[] args) throws IOException, InterruptedException {
         EntityService es = new EntityService();
@@ -64,8 +63,9 @@ public class MainClass {
 
 //        exportObject("blabla.yaml");
         YamlService.write(rootNode, "blabla.yaml");
-        run_solstice();
-
+//        run_cmd("solstice -h");
+//        SolsticeService.run_cmd("solstice  -n 100 -g format=obj -t1 -D 0,0 -R receiver.yaml blabla.yaml");
+        exportObj(0.0,0.0);
     }
 
 }

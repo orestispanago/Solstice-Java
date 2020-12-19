@@ -1,0 +1,2 @@
+blabla.yaml:26:5: the entity primary parameter is missing.
+	by blabla.yaml:25:3
