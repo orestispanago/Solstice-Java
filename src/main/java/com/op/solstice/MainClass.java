@@ -50,21 +50,17 @@ public class MainClass {
         GeometryItem geometryItem = new GeometryItem(materialBlack, plane);
         geometry.append(geometryItem);
 
-        List geometry1 = new ArrayList();
-        geometry1.add(geometryItem);
-
         Entity entity = new Entity("entity1");
-        entity.setGeometry(geometry1);
+        entity.setGeometry(geometry.getGeometryList());
+        entity.setPrimary(0);
         rootNode.append(sun);
         rootNode.append(materialSpecular);
         rootNode.append(materialBlack);
         rootNode.append(geometry);
         rootNode.append(entity);
 
-//        exportObject("blabla.yaml");
         YamlService.write(rootNode, "blabla.yaml");
 //        run_cmd("solstice -h");
-//        SolsticeService.run_cmd("solstice  -n 100 -g format=obj -t1 -D 0,0 -R receiver.yaml blabla.yaml");
         exportObj(0.0,0.0);
     }
 

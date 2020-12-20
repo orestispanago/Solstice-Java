@@ -11,9 +11,8 @@
       matte: &id002 {reflectivity: 0.0}
     front:
       matte: *id002
-- geometry:
-  - &id004
-    material: *id003
+- geometry: &id004
+  - material: *id003
     plane:
       clip:
       - operation: AND
@@ -23,9 +22,9 @@
         - [1.0, 1.0]
         - [1.0, 1.0]
 - entity:
-    geometry:
-    - *id004
+    geometry: *id004
     name: entity1
+    primary: 0
     transform:
       rotation: [0.0, 0.0, 0.0]
       translation: [0.0, 0.0, 0.0]

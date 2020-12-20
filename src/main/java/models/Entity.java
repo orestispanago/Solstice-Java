@@ -8,10 +8,12 @@ public class Entity extends Node {
     private Transform transform;
     private List geometry;
     private List children;
-    
+    private int primary;
+
     public Entity(String name) {
         this.name = name;
         this.transform = new Transform();
+        this.primary = 1;
     }
 
     public String getName() {
@@ -38,7 +40,6 @@ public class Entity extends Node {
         this.geometry = geometry;
     }
 
-
     public List getChildren() {
         return children;
     }
@@ -47,9 +48,17 @@ public class Entity extends Node {
         this.children = children;
     }
 
+    public int getPrimary() {
+        return primary;
+    }
+
+    public void setPrimary(int primary) {
+        this.primary = primary;
+    }
+
     @Override
     public String toString() {
-        return "Entity{" + "name=" + name + ", transform=" + transform + '}';
+        return "Entity{" + "name=" + name + ", transform=" + transform + ", geometry=" + geometry + ", children=" + children + ", primary=" + primary + '}';
     }
 
 }

@@ -1,4 +1,4 @@
-package com.op.solstice;
+package services;
 
 import java.util.Set;
 import org.yaml.snakeyaml.introspector.Property;
@@ -8,7 +8,7 @@ import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
 
 public class SolsticeRepresenter extends Representer {
-    
+
     @Override
     protected MappingNode representJavaBean(Set<Property> properties, Object javaBean) {
         if (!classTags.containsKey(javaBean.getClass())) {

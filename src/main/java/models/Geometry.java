@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Geometry extends Node{
+public class Geometry extends Node {
 
     private List geometryList;
 
@@ -24,11 +24,11 @@ public class Geometry extends Node{
     public String toString() {
         return "Geometry{" + "geometryList=" + geometryList + '}';
     }
-    
-    public void append(GeometryItem geometryItem){
+
+    public void append(GeometryItem geometryItem) {
         this.geometryList.add(geometryItem);
     }
-    
+
     @Override
     public HashMap<String, Object> toHashMap() {
         String name = this.getClass().getSimpleName().toLowerCase();

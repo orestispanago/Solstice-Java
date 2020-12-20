@@ -1,6 +1,5 @@
 package services;
 
-import com.op.solstice.SolsticeRepresenter;
 import java.io.FileWriter;
 import java.io.IOException;
 import models.RootNode;
